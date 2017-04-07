@@ -1,0 +1,20 @@
+<notempty name="group_list">
+    <foreach name="group_list" item="vo">
+        <li class="has-sub open">
+            <a href="javascript:void(0);" class="offsite" id="has_{$vo[id]}">
+                <i class="glyphicon glyphicon-th-large"></i>
+                <span class="menu-text">{$vo[fname]}</span>
+                <span class="glyphicon glyphicon-triangle-bottom arrow"></span>
+            </a>
+            <ul class="sub" style="display: block">
+                <foreach name="vo[funt_list]" item="v">
+                <li>
+                    <a href="{:U("$v[furi]")}">{:str_replace($search, '<span class="text-primary" style="font-weight: bold;">' . $search . '</span>', $v['fname'])}</a>
+                </li>
+                </foreach>
+            </ul>
+        </li>
+    </foreach>
+<else />
+    <p class="text-warning" style="padding-left: 13px; font-size: 13px; padding-top: 10px;">Sorry nothing was found.</p>
+</notempty>

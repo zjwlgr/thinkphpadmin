@@ -1,0 +1,116 @@
+<layout name="Layout/base" />
+
+<header id="header" class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <span class="glyphicon glyphicon-menu-left glyphicon-pos"></span>
+            {:C('ADMIN_NAME')}
+            <span class="glyphicon glyphicon-menu-right glyphicon-pos"></span>
+        </div>
+        <ul id="navbar-left" class="nav navbar-nav pull-left">
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="{:U('Index/index')}">
+                    <span class="glyphicon glyphicon-list-alt glyphicon-pos-2"></span>
+                    <span class="name">系统信息查看</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="/" target="_blank">
+                    <span class="glyphicon glyphicon-home glyphicon-pos-2"></span>
+                    <span class="name">网站首页</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li id="header-user" class="dropdown">
+                <a class="dropdown-toggle" href="">
+                    <span class="glyphicon glyphicon-user glyphicon-pos-2"></span>
+                    {$manager_sess[group_name]} [ <span class="username">{$manager_sess[uname]}</span> ]
+                </a>
+            </li>
+            <li id="header-message" class="dropdown">
+                <a class="dropdown-toggle" href="{:U('Manager/editpwd')}">
+                    <span class="glyphicon glyphicon-ok-circle glyphicon-pos-2"></span>
+                    修改密码
+                </a>
+            </li>
+            <li id="header-tasks" class="dropdown">
+                <a class="dropdown-toggle" href="{:U('Login/loginout')}">
+                    <span class="glyphicon glyphicon-remove-circle glyphicon-pos-2"></span>
+                    安全退出
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+<section id="page">
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-menu">
+            <div class="divide-10"></div>
+            <div id="search-bar">
+                <input class="search" id="left_search" type="text" placeholder="搜索">
+                <input type="hidden" id="left_hidden_url" value="{:U('Common/ajaxLeft')}">
+                <input type="hidden" id="left_hidden_search" value="">
+                <input type="hidden" id="left_hidden" value="">
+                <span id="search_loader" class="glyphicon glyphicon-search search-icon"><img src="/Public/image/loaders/16.gif" style="display: none;" /> </span>
+            </div>
+
+            <ul id="left_ajax">
+
+                <foreach name="manager_sess[funclist]" item="vo">
+                <li class="has-sub">
+                    <a href="javascript:void(0);" class="offsite" id="has_{$vo[id]}">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        <span class="menu-text">{$vo[fname]}</span>
+                        <span class="glyphicon glyphicon-triangle-left arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <foreach name="vo[funt_list]" item="v">
+                        <li><a href="{:U($v[furi])}">{$v[fname]}</a></li>
+                        </foreach>
+                    </ul>
+                </li>
+                </foreach>
+
+            </ul>
+
+            <div class="divide-20"></div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="content" class="col-lg-12">
+
+                    <div class="row_hander">
+                        <ol class="breadcrumb backbread">
+                            <span class="glyphicon glyphicon-log-out myglyphicon"></span>
+                            <li class="active">{:C('ADMIN_NAME')}</li>
+                            <?php $forTitle = explode('-',str_replace(' ','',$title)); ?>
+                            <foreach name="forTitle" item="vo">
+                            <li class="active">{$vo}</li>
+                            </foreach>
+                        </ol>
+                    </div>
+
+                    <div class="row_main-content">
+
+                        {__CONTENT__}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<footer class="bs-footer">
+    Copyright © 2016-{:date('Y')} by <a href="{:C('WEB_URL')}" target="_blank">{:str_replace('http://www.','',C('WEB_URL'))}</a>  All Rights Reserved. version {:C('VERSION')}
+</footer>
