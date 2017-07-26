@@ -1,10 +1,9 @@
 <?php
-define('OSS_ACCESS_ID', '7rsTe4iro3yqNd8N');
-define('OSS_ACCESS_KEY', 'kMSk12bKKkLuYMkq3nrMalemKOzfxI');
-define('OSS_ENDPOINT', 'oss-cn-beijing.aliyuncs.com');//外网地址
-//define('OSS_ENDPOINT', 'oss-cn-beijing-internal.aliyuncs.com');//内网地址
+define('OSS_ACCESS_ID', 'XXXXXXXXxxx');
+define('OSS_ACCESS_KEY', 'XXXXXXXXxxxXXXXXXXXxxx');
+define('OSS_ENDPOINT', 'oss-cn.aliyuncs.com');//外网地址
+//define('OSS_ENDPOINT', 'oss-cn-internal.aliyuncs.com');//内网地址
 define('OSS_TEST_BUCKET', 'senrunweb');
-//http://oss-cn-beijing.aliyuncs.com/kuaxuexx
 
 //是否记录日志
 define('ALI_LOG', FALSE);
