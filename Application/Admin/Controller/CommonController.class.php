@@ -12,7 +12,7 @@ class CommonController extends Controller {
             $this->manager_sess = session('manager');
             $this->judge();//判断当前管理员对当前URL的权限
             $manager_sess = $this->manager_sess;//为属性赋值
-            $manager_sess['group_name'] = $this->getGname($manager_sess['id']);//管理组名称
+            $manager_sess['group_name'] = $this->getGname($manager_sess['group_id']);//管理组名称
             $manager_sess['funclist'] =  $this->getFunclist();//管理左侧功能列表
             $this->assign('manager_sess',$manager_sess);//模板中所用数据
             layout('Layout/main');//默认布局
@@ -84,7 +84,7 @@ class CommonController extends Controller {
                             $val_ar[] = $va;
                         }
                     }
-                    if (in_array($furi['id'], $val_ar)) {
+                    if (in_array($furi[0]['id'], $val_ar)) {
                         //如果功能ID存在当前管理员用户组中 无操作
                     } else {
                         $this->error('您没有该页面的操作权限！');
