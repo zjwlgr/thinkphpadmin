@@ -106,7 +106,7 @@ class FunctionModel extends Model {
         $one = self::tab()
             ->where("furi='$url'")
             ->field('id,furi')
-            ->select();
+            ->find();
         return $one;
     }
 
