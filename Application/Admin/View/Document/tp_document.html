@@ -1,0 +1,65 @@
+<div class="bs-example">
+
+  <div class="bs-hander">
+
+    <a href="{:U('tp_document')}" type="button" class="btn btn-default active"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; 列 表 ({$count})</a>
+    <a href="{:U('add_document')}" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp; 新 增 </a>
+
+  </div>
+
+  <div class="bs-center">
+
+    <table class="table table-margin">
+      <thead>
+      <tr>
+        <td width="5%" class="text-muted">分类</td>
+        <td width="95%">
+          <foreach name="types" item="vo" key="k">
+            <a href="{:U("tp_document?type=$k")}" class="{:v_v($type,$k)}">{$vo}</a>&nbsp;&nbsp;&nbsp;
+          </foreach>&nbsp;&nbsp;
+        </td>
+      </tr>
+      </thead>
+    </table>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr class="active">
+        <th width="4%">#</th>
+        <th width="26%">接口名称</th>
+        <th width="9%">类别</th>
+        <th width="5%">排序号</th>
+        <th width="10%">添加时间</th>
+        <th width="7%">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <foreach name="list" item="vo" key="k">
+      <tr>
+        <th scope="row">{$k+1}</th>
+        <td>{$vo.title}</td>
+        <td>{$types[$vo[type]]}</td>
+        <td>{$vo.sort}</td>
+        <td>{$vo.ctime|date="Y-m-d H:i:s",###}</td>
+        <td>
+
+          <a href="{:U("up_document?id=$vo[id]&type=$type")}">编辑</a> |
+          <a href="{:U("del_un?id=$vo[id]")}" class="delete" >删除</a>
+
+        </td>
+      </tr>
+      </foreach>
+
+      </tbody>
+    </table>
+
+    <empty name="list">
+      <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-info-sign glyphicon-pos-2"></span> 暂无信息！</div>
+    </empty>
+
+    {$page}
+
+  </div>
+
+</div>

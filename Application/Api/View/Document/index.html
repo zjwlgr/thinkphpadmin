@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$typename}</title>
+    <link type="text/css" href="/Public/sideshow/zjwlgr.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Public/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/Public/js/common.js"></script>
+</head>
+<body>
+<div class="topc">
+    <foreach name="typelist" item="vo" key="k">
+        <a href="{:U("index?type=$k")}" <neq name="k" value="$type">style="color: #cccccc;"</neq>>{$vo}</a>
+        &nbsp;&nbsp;
+        </foreach>
+
+    <empty name="cookie"><else/>
+    <span>你好：{$cookie[username]}，[<a href="{:U("loginout")}">退出</a>]</span>
+    </empty>
+</div>
+<div class="main">
+    <div class="left">
+        <ul>
+            <foreach name="list" item="vo" key="k" >
+            <li><a href="#" class="mihlai <eq name="vo[key]" value="01">lcick</eq>" _i="{$vo.id}" title="{$vo[title]}">{$vo[key]}. {:subtitle($vo[title],28,'...')}</a></li>
+            </foreach>
+        </ul>
+    </div>
+    <div class="right">
+        <foreach name="list" item="vo" key="k" >
+        <div>
+            <dl id="mj_{$vo[id]}"><b>{$vo[key]}. {$vo[title]}</b></dl>
+            <ul>{$vo[content]}</ul>
+        </div>
+        </foreach>
+    </div>
+</div>
+<div class="botc">版权所有：{$_SERVER['HTTP_HOST']}</div>
+</body>
+</html>

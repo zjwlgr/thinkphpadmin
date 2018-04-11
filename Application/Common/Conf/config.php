@@ -20,7 +20,7 @@ $config = array(
         'admin.domain1.com'  => 'Admin'  // admin.domain1.com域名指向Admin模块
     ), // 子域名部署规则
 
-    'MODULE_ALLOW_LIST'  => array('Home','adminindex'),//要访问的模块
+    'MODULE_ALLOW_LIST'  => array('Home','adminindex','Api'),//要访问的模块
     'MODULE_DENY_LIST'   => array('Common'),//禁止访问的模块
     'DEFAULT_MODULE'     => 'Home',//默认模块
     'DEFAULT_CONTROLLER' => 'Index', // 默认控制器名称
@@ -55,6 +55,22 @@ $config = array(
     'DB_SQL_BUILD_LENGTH'   =>  20, // SQL缓存的队列长度
     'DB_SQL_LOG'            =>  false, // SQL执行日志记录
     'DB_BIND_PARAM'         =>  false, // 数据库写入数据自动参数绑定
+
+    // 配置邮件发送服务器
+    //'MAIL_HOST' =>'smtp.exmail.qq.com',//smtp服务器的名称
+    'MAIL_HOST' =>'smtp.qq.com',//smtp服务器的名称
+    'MAIL_SMTPAUTH' =>TRUE, //启用smtp认证
+    'MAIL_USERNAME' =>'2949992173@qq.com',//你的邮箱名
+    'MAIL_FROM' =>'2949992173@qq.com',//发件人地址
+    'MAIL_FROMNAME'=>'链币',//发件人姓名
+    'MAIL_PASSWORD' =>'zjwlgr47782906',//邮箱密码
+    'MAIL_CHARSET' =>'utf-8',//设置邮件编码
+    'MAIL_ISHTML' =>TRUE, // 是否HTML格式邮件
+
+    'APITYPE'       =>  array(
+        '1' => '张健开发API',
+        '2' => '大彭开发API'
+    ),
 
 );
 
